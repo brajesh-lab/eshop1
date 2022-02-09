@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+<title >home </title>
+{% load cart %}
+{% block content %} 
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-lg-3 mx-auto">
+      <div class="list-group">
+        <a href="/" class="list-group-item list-group-item-action ">All Items</a>
+    
+      </div>
+        {% for category in category %}
+      <div class="list-group">
+       <a href="/?category={{category.id}}" class="list-group-item list-group-item-action ">{{category.name}}</a>
+     
+      </div>
+     {% endfor %}
+   </div>
+
+
+
+    <div id='item' class="col-lg-9">
+      <div class="row mx-auto">
+        {% for items in item %}
+            <div class="card  mx-3 mb-3 " id ={{items.id}} style="width: 11rem;">
+                <img class="card-img-top"src={{items.img.url}}  alt="image note found" height = '100'>
+                  <div class="card-body">
+                    <p class="card-title">{{items.name}}</p>
+                    <p class="card-text">{{items.price|currency}}</p>
+                     
+
+              </div>
+              <div class="card-footer p-0 mt-1">
+               
+                <form action="cart" method="POST" class="btn-block">
+                  {% csrf_token %}
+                  
+                  <input type="hidden" name="id" value="{{items.id}}" class="form-control input-sm"><br>
+                  <input type="submit" value="buy "class="btn btn-block  btn-light">
+                </form>
+                
+              
+              
+                
+
+              </div>
+              
+          </div>
+            {% endfor %}
+          </div>
+
+    </div>
+  
+ </div>
+{% endblock %}
+    
+    
+
+   
+
+   
+
+  

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+<title> SignUp </title>
+{% block content %}
+<div class="container">
+    <div class="m-4 p-4">
+        <div class="col-lg-5 mx-auto  border rounded">
+          <h3 class="alert alert-light border rounded">Create Account </h3>
+            <form action="login" method="POST">
+              {% csrf_token %}
+
+              {% if error %}
+              <div class="alert alert-danger" role="alert">
+               
+                <p>{{error}}</p>
+               
+              </div>
+              {% endif %}
+
+              
+                <div class="form-group">
+                  
+                  <label for="">Email</label>
+            
+                  <input  type="email" name="email" id="email" class="form-control" placeholder="email" >
+             
+            </div>
+           
+
+            <div class="form-group">
+                  
+              <label for="">Password</label>
+        
+              <input  type="password" name="password" id="password" class="form-control" placeholder="Enter password Here" >
+         
+        </div>
+
+        {% if msg %}
+        <div class="alert alert-success" role="alert">
+         
+          <p>{{msg}}</p>
+       
+        </div>
+
+        
+      {% endif %}
+
+        <input type="submit" value="login" class="btn btn-block btn-success">
+
+
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

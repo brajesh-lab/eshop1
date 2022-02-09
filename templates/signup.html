@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+<title> SignUp </title>
+{% block content %}
+<div class="container">
+    <div class="m-4 p-4">
+        <div class="col-lg-5 mx-auto  border rounded">
+          <h3 class="alert alert-light border rounded">Create Account </h3>
+            <form action="/signup" method="POST">
+              {% csrf_token %}
+
+              {% if error %}
+              <div class="alert alert-danger" role="alert">
+               
+                <p>{{error}}</p>
+               
+              </div>
+              {% endif %}
+
+                <div class="form-group">
+                  
+                      <label for="">Name</label>
+                
+                      <input value="{{val.f_name}}" type="text" name="f_name" id="f_name" class="form-control" placeholder="First Name" >
+                 
+                </div>
+
+                <div class="form-group">
+                  <label for="">Last Name</label>
+                  <input value="{{val.l_name}}" type="text" name="L_name" id="L_name" class="form-control" placeholder="Last Name" >
+        
+                </div>
+                
+                <div class="form-group">
+                  
+                  <label for="">Email</label>
+            
+                  <input  value="{{val.email}}" type="email" name="email" id="email" class="form-control" placeholder="email" >
+             
+            </div>
+            <div class="form-group">
+                  
+              <label for="">Phone No.</label>
+        
+              <input value="{{val.phone}}" type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number" >
+         
+        </div>
+
+            <div class="form-group">
+                  
+              <label for="">Password</label>
+        
+              <input  type="password" name="password" id="password" class="form-control" placeholder="Enter password Here" >
+         
+        </div>
+
+        {% if msg %}
+        <div class="alert alert-success" role="alert">
+         
+          <p>{{msg}}</p>
+       
+        </div>
+
+        
+      {% endif %}
+
+        <input type="submit" value="Create Acount" class="btn btn-block btn-success">
+
+
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
